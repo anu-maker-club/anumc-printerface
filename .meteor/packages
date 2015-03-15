@@ -6,6 +6,7 @@
 meteor-platform
 autopublish
 insecure
-bootstrap
 iron:router
 
+nemo64:bootstrap
+less

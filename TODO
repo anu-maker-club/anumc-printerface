@@ -1,0 +1,4 @@
+ - Start by getting some basic routes up with Iron Router
+ - Look into layouts to see how to get a standard header and footer on all your
+   pages.
+ - Try to integrate the ANU MC logo
