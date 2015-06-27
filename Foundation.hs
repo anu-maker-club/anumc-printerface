@@ -55,7 +55,6 @@ instance Yesod App where
         "config/client_session_key.aes"
 
     defaultLayout widget = do
-        master <- getYesod
         mmsg <- getMessage
 
         -- We break up the default layout into two components:
@@ -66,6 +65,9 @@ instance Yesod App where
 
         pc <- widgetToPageContent $ do
             addStylesheet $ StaticR css_bootstrap_css
+            addStylesheet $ StaticR css_bootstrap_theme_css
+            addScript $ StaticR js_jquery_js
+            addScript $ StaticR js_bootstrap_js
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
