@@ -1,0 +1,55 @@
+body {
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    /* Make buttons flush with left hand side iff navbar expanded */
+    #navbar-collapsible, nav .container-fluid {
+        padding-left: 0;
+    }
+
+    .instructions {
+        display: flex;
+        flex: 1 0 auto;
+    }
+}
+
+.navbar {
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+}
+
+.instruction {
+    border-radius: 4px;
+    padding: 1px 15px 5px 15px;
+    height: 100%;
+    background-color: #fafafa;
+}
+
+.instructions {
+    counter-reset: instructions;
+}
+
+.instruction h3:before {
+    counter-increment: instructions;
+    content: counter(instructions);
+    margin-right: 0.5em;
+    color: #888;
+}
+
+.instructions > div:nth-child(2) .instruction {
+    background-color: inherit;
+}
+
+.upload-form .widgets {
+    display: flex;
+    align-items: center;
+}
+
+.upload-form .widgets input[type=file] {
+    flex: 1;
+    overflow: hidden;
+    margin-right: 15px;
+}
