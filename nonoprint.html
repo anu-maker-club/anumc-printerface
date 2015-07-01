@@ -3,100 +3,128 @@
 </head>
 
 <body>
-    <div class=container>
-        <!-- Navbar -->
-        <nav class='navbar navbar-default'>
-            <div class=container-fluid>
-                <div class="navbar-header navbar-right">
-                    <!-- Button to collapse navbar links -->
-                    <button type=button class="navbar-toggle collapsed"
-                        data-toggle=collapse data-target=#navbar-collapsible
-                        aria-expanded=false aria-controls=navbar-collapsible>
-                        <span class=sr-only>Toggle navigation</span>
-                        <span class=icon-bar></span>
-                        <span class=icon-bar></span>
-                        <span class=icon-bar></span>
-                    </button>
-                </div>
+</body>
 
-                <!-- Navbar links themselves -->
-                <div class="navbar-collapse navbar-left collapse" id=navbar-collapsible>
-                    <ul class="nav navbar-nav">
-                        <li class=active><a href=/>Dashboard</a></li>
-                        <li><a href=/>Slicing</a></li>
-                        <li><a href=/>Printing</a></li>
-                        <li><a href=/>Settings</a></li>
-                        <li>
-                            <a>
-                                MakerShells:
-                                <span class=remaining-shells>37</span>Ꭶ
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Now the content -->
-        <div class="row instructions">
-            <div class=col-md-4>
-                <div class=instruction>
-                    <h3>Upload</h3>
-
-                    <p>
-                        Design your own 3D model or download one from <a
-                        href="https://www.thingiverse.com/">Thingiverse</a>,
-                        then upload a copy here.
-                    </p>
-
-                    <form action=/ method=post class=upload-form>
-                        <div class=widgets>
-                            <input type=file name=stl>
-                            <input type=submit value=Upload class="btn btn-default">
-                        </div>
-
-                        <p class=help-block>
-                            <code>.stl</code> format only, 10MiB limit.
-                        </p>
-                    </form>
-                </div>
-            </div>
-            <div class=col-md-4>
-                <div class=instruction>
-                    <h3>Slice</h3>
-
-                    <p>
-                        We'll automatically slice your model into a set of
-                        instructions which a 3D printer can understand, then
-                        tell you how long your model will take to print and
-                        how many Ꭶ it will cost.
-                    </p>
-
-                    <p>
-                        Head over to the <a href=/>slicing</a> page to
-                        monitor slicing progress for your uploaded models.
-                    </p>
-                </div>
+<template name="nav">
+    <!-- Navbar -->
+    <nav class='navbar navbar-default'>
+        <div class="container-fluid">
+            <div class="navbar-header navbar-right">
+                <!-- Button to collapse navbar links -->
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar-collapsible"
+                    aria-expanded="false" aria-controls="navbar-collapsible">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
 
-            <div class=col-md-4>
-                <div class=instruction>
-                    <h3>Print</h3>
+            <!-- Navbar links themselves -->
+            <div class="navbar-collapse navbar-left collapse" id="navbar-collapsible">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Dashboard</a></li>
+                    <li><a href="/">Slicing</a></li>
+                    <li><a href="/">Printing</a></li>
+                    <li><a href="/">Settings</a></li>
+                    <li>
+                        <a>
+                            MakerShells:
+                            <span class="remaining-shells">37</span>Ꭶ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>
 
-                    <p>
-                        Once you're happy with the quoted printing cost, you
-                        can submit your sliced model for printing. We'll
-                        contact you when it's done.
-                    </p>
+<template name="instructions">
+    <div class="row instructions">
+        <div class="col-md-4">
+            <div class="instruction">
+                <h3>Upload</h3>
 
-                    <p>
-                        Use the <a href=/>slicing</a> page to see which
-                        models you can print, or head over to the <a
-                        href=/>printing</a> page to keep an eye on your
-                        prints in progress.
+                <p>
+                    Design your own 3D model or download one from <a
+                    href="https://www.thingiverse.com/">Thingiverse</a>,
+                    then upload a copy here.
+                </p>
+
+                <form action="/" method="post" class="upload-form">
+                    <div class="widgets">
+                        <input type="file" name="stl">
+                        <input type="submit" value="Upload" class="btn btn-default">
+                    </div>
+
+                    <p class="help-block">
+                        <code>.stl</code> format only, 10MiB limit.
                     </p>
-                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="instruction">
+                <h3>Slice</h3>
+
+                <p>
+                    We'll automatically slice your model into a set of
+                    instructions which a 3D printer can understand, then
+                    tell you how long your model will take to print and
+                    how many Ꭶ it will cost.
+                </p>
+
+                <p>
+                    Head over to the <a href="/">slicing</a> page to
+                    monitor slicing progress for your uploaded models.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="instruction">
+                <h3>Print</h3>
+
+                <p>
+                    Once you're happy with the quoted printing cost, you
+                    can submit your sliced model for printing. We'll
+                    contact you when it's done.
+                </p>
+
+                <p>
+                    Use the <a href="/">slicing</a> page to see which
+                    models you can print, or head over to the <a
+                    href="/">printing</a> page to keep an eye on your
+                    prints in progress.
+                </p>
             </div>
         </div>
     </div>
-</body>
+</template>
+
+<template name="dashboard">
+    <div class="container">
+        {{> nav}}
+
+        {{> instructions}}
+    </div>
+</template>
+
+<template name="slicing">
+    <div class="container">
+        {{> nav}}
+    </div>
+</template>
+
+<template name="printing">
+    <div class="container">
+        {{> nav}}
+    </div>
+</template>
+
+<template name="settings">
+    <div class="container">
+        {{> nav}}
+    </div>
+</template>
