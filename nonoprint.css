@@ -1,6 +1,7 @@
 body {
     padding: 0;
     padding-bottom: 20px;
+    background: url(/crossword/crossword.png) repeat !important;
 }
 
 @media (min-width: 768px) {
