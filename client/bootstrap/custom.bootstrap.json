@@ -2,7 +2,7 @@
   "modules" : {
     "normalize"            : true,
     "print"                : false,
-    "glyphicons"           : false,
+    "glyphicons"           : true,
 
     "scaffolding"          : true,
     "type"                 : true,
@@ -28,8 +28,8 @@
     "thumbnails"           : false,
     "alerts"               : false,
     "progress-bars"        : false,
-    "media"                : false,
-    "list-group"           : false,
+    "media"                : true,
+    "list-group"           : true,
     "panels"               : false,
     "responsive-embed"     : false,
     "wells"                : false,

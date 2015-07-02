@@ -44,13 +44,38 @@ body {
     background-color: inherit;
 }
 
-.upload-form .widgets {
+.flist-item h4, .widgets {
     display: flex;
     align-items: center;
 }
 
-.upload-form .widgets input[type=file] {
+.flist-item span {
+    white-space: nowrap;
+}
+
+.flist-buttons > a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.flist-name, .widgets > :first-child  {
     flex: 1;
     overflow: hidden;
-    margin-right: 15px;
+    margin-right: 10px;
+}
+
+.flist-meta-table {
+    margin: 0;
+}
+
+.flist-meta-table td {
+    width: 100%;
+}
+
+.flist-meta-table th {
+    padding-right: 10px;
+}
+
+.printer-status-table {
+    table-layout: fixed;
 }

@@ -4,9 +4,7 @@ Router.route('/', function() {
     name: 'dashboard'
 });
 
-Router.route('/slicing');
-
-Router.route('/printing');
+Router.route('/admin');
 
 Router.route('/settings');
 

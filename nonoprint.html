@@ -24,10 +24,21 @@
             <!-- Navbar links themselves -->
             <div class="navbar-collapse navbar-left collapse" id="navbar-collapsible">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Dashboard</a></li>
-                    <li><a href="/">Slicing</a></li>
-                    <li><a href="/">Printing</a></li>
-                    <li><a href="/">Settings</a></li>
+                    <li class="active">
+                        <a href="{{pathFor 'dashboard'}}">
+                            Printing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'admin'}}">
+                            Administration
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'settings'}}">
+                            Settings
+                        </a>
+                    </li>
                     <li>
                         <a>
                             MakerShells:
@@ -49,19 +60,8 @@
                 <p>
                     Design your own 3D model or download one from <a
                     href="https://www.thingiverse.com/">Thingiverse</a>,
-                    then upload a copy here.
+                    then upload a copy below.
                 </p>
-
-                <form action="/" method="post" class="upload-form">
-                    <div class="widgets">
-                        <input type="file" name="stl">
-                        <input type="submit" value="Upload" class="btn btn-default">
-                    </div>
-
-                    <p class="help-block">
-                        <code>.stl</code> format only, 10MiB limit.
-                    </p>
-                </form>
             </div>
         </div>
         <div class="col-md-4">
@@ -73,11 +73,6 @@
                     instructions which a 3D printer can understand, then
                     tell you how long your model will take to print and
                     how many Ꭶ it will cost.
-                </p>
-
-                <p>
-                    Head over to the <a href="/">slicing</a> page to
-                    monitor slicing progress for your uploaded models.
                 </p>
             </div>
         </div>
@@ -91,16 +86,234 @@
                     can submit your sliced model for printing. We'll
                     contact you when it's done.
                 </p>
-
-                <p>
-                    Use the <a href="/">slicing</a> page to see which
-                    models you can print, or head over to the <a
-                    href="/">printing</a> page to keep an eye on your
-                    prints in progress.
-                </p>
             </div>
         </div>
     </div>
+</template>
+
+<template name="files">
+    <ul class="list-group">
+        <li class="list-group-item flist-item">
+            <h4 class="list-group-item-heading">
+                <span class="flist-name">
+                    some-really-long-filename-which-will-break-this-box-omg-thats-not-long-enough.stl
+                </span>
+
+                <span class="flist-buttons">
+                    <a class="glyphicon glyphicon-trash" title="Delete">
+                        <span class="sr-only">
+                            Delete
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-download" title="Download">
+                        <span class="sr-only">
+                            Download
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-print" title="Print">
+                        <span class="sr-only">
+                            Print
+                        </span>
+                    </a>
+                </span>
+            </h4>
+
+            <p class="list-group-item-text">
+                Slicing: 10%
+            </p>
+        </li>
+
+        <li class="list-group-item flist-item">
+            <h4 class="list-group-item-heading">
+                <span class="flist-name">
+                    some_file3.stl
+                </span>
+
+                <span class="flist-buttons">
+                    <a class="glyphicon glyphicon-trash" title="Delete">
+                        <span class="sr-only">
+                            Delete
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-download" title="Download">
+                        <span class="sr-only">
+                            Download
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-print" title="Print">
+                        <span class="sr-only">
+                            Print
+                        </span>
+                    </a>
+                </span>
+            </h4>
+
+            <p class="list-group-item-text">
+                Ready to print (12Ꭶ)&mdash;2m plastic, est. time 15 minutes
+            </p>
+        </li>
+
+        <li class="list-group-item flist-item">
+            <h4 class="list-group-item-heading">
+                <span class="flist-name">
+                    a third filename.stl
+                </span>
+
+                <span class="flist-buttons">
+                    <a class="glyphicon glyphicon-trash" title="Delete">
+                        <span class="sr-only">
+                            Delete
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-download" title="Download">
+                        <span class="sr-only">
+                            Download
+                        </span>
+                    </a>
+                    <a class="glyphicon glyphicon-print" title="Print">
+                        <span class="sr-only">
+                            Print
+                        </span>
+                    </a>
+                </span>
+            </h4>
+
+            <p class="list-group-item-text">
+                Ready to print (30Ꭶ)&mdash;3.8m plastic, est. time 25 minutes
+            </p>
+        </li>
+    </ul>
+
+    <form action="/" method="post" class="upload-form">
+        <span class="widgets">
+            <input type="file" name="stl">
+            <input type="submit" value="Upload" class="btn btn-default">
+        </span>
+
+        <p class="help-block">
+            <code>.stl</code> format only, 10MiB limit.
+        </p>
+    </form>
+</template>
+
+<template name="printstatus">
+    <div class="media">
+        <div class="media-left">
+            <img src="http://placekitten.com/g/64/64" class="media-object"
+                alt="Latest image of printer">
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">
+                Printer: GenericPrintBot 2
+            </h4>
+
+            <table class="table printer-status-table">
+                <tr>
+                    <th>
+                        Status
+                    </th>
+                    <td>
+                        Printing
+                    </td>
+
+                    <th>
+                        Spool left
+                    </th>
+                    <td>
+                        17.6m
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Bed temp.
+                    </th>
+                    <td>
+                        50&deg;C
+                    </td>
+
+                    <th>
+                        Head temp.
+                    </th>
+                    <td>
+                        91&deg;C
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</template>
+
+<template name="jobs">
+    <input type="checkbox" id="my-jobs-checkbox">
+    <label for="my-jobs-checkbox">Show only my jobs</label>
+
+    <ul class="list-group">
+        <li class="list-group-item flist-item">
+            <h4 class="list-group-item-heading">
+                <span class="flist-name">
+                    a third filename.stl
+                </span>
+
+                <span class="flist-buttons">
+                    <a class="glyphicon glyphicon-remove" title="Cancel">
+                        <span class="sr-only">
+                            Cancel
+                        </span>
+                    </a>
+                </span>
+            </h4>
+
+            <p class="list-group-item-text">
+                <table class="table flist-meta-table">
+                    <tr>
+                        <th>Owner:</th>
+                        <td>qxcv</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td>Printing (00:02:33 elapsed)</td>
+                    </tr>
+                    <tr>
+                        <th>ETA:</th>
+                        <td>00:22:27</td>
+                    </tr>
+                </table>
+            </p>
+        </li>
+
+        <li class="list-group-item flist-item">
+            <h4 class="list-group-item-heading">
+                <span class="flist-name">
+                    someone-elses-job.stl
+                </span>
+
+                <span class="flist-buttons">
+                    <a class="glyphicon glyphicon-remove" title="Cancel">
+                        <span class="sr-only">
+                            Cancel
+                        </span>
+                    </a>
+                </span>
+            </h4>
+
+            <p class="list-group-item-text">
+                <table class="table flist-meta-table">
+                    <tr>
+                        <th>Owner:</th>
+                        <td>asdf128</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td>In queue</td>
+                    </tr>
+                    <tr>
+                        <th>ETA:</th>
+                        <td>Unkown</td>
+                    </tr>
+                </table>
+            </p>
+        </li>
+    </ul>
 </template>
 
 <template name="dashboard">
@@ -108,16 +321,27 @@
         {{> nav}}
 
         {{> instructions}}
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Uploaded files</h3>
+
+                {{> files}}
+            </div>
+            <div class="col-md-6">
+                <h3>Printing</h3>
+
+                {{> printstatus}}
+
+                <h4>Jobs</h4>
+
+                {{> jobs}}
+            </div>
+        </div>
     </div>
 </template>
 
-<template name="slicing">
-    <div class="container">
-        {{> nav}}
-    </div>
-</template>
-
-<template name="printing">
+<template name="admin">
     <div class="container">
         {{> nav}}
     </div>
